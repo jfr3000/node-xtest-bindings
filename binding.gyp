@@ -2,7 +2,7 @@
     "targets": [
         {
             "target_name": "NativeExtension",
-            "sources": [ "NativeExtension.cc", "functions.cc" ],
+            "sources": [ "myobject.cc"],
              "libraries": [
                 "-lX11", "-lXtst"
             ],
