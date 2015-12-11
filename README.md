@@ -1,3 +1,7 @@
+```
+sudo apt-get install libxtst-dev
+```
+
 # Node Native Extension Boilerplate
 
 [![Build Status](https://travis-ci.org/fcanas/node-native-boilerplate.svg)](https://travis-ci.org/fcanas/node-native-boilerplate)
