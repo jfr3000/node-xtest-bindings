@@ -7,14 +7,14 @@ NAN_METHOD(XTestFakeKeyEvent) {
     auto keyCode = keyCodeWrapper->Int32Value();
     Display *display = XOpenDisplay(NULL);
     auto shiftKeycode = XKeysymToKeycode(display, XK_Shift_L);
-    XTestGrabControl (display, true);
+    XTestGrabControl(display, true);
 
-    XTestFakeKeyEvent (display, shiftKeycode, true, 0);
+    XTestFakeKeyEvent(display, shiftKeycode, true, 0);
 
-    XTestFakeButtonEvent (display, 1, true, 5000);
-    XTestFakeButtonEvent (display, 1, false, 0);
+    XTestFakeButtonEvent(display, 1, true, 5000);
+    XTestFakeButtonEvent(display, 1, false, 0);
 
-    XTestFakeKeyEvent (display, shiftKeycode, false, 0);
+    XTestFakeKeyEvent(display, shiftKeycode, false, 0);
 
     XSync(display, false);
 

@@ -31,11 +31,11 @@ class MyObject : public Nan::ObjectWrap {
                 cout << "Opening default display " << endl;
             }
             display = XOpenDisplay(displayArg);
-            XTestGrabControl (display, true);
+            XTestGrabControl(display, true);
         }
         ~MyObject() {
             cout << "Closing display" << endl;
-            XTestGrabControl (display, false);
+            XTestGrabControl(display, false);
             XCloseDisplay(display);
         }
 
