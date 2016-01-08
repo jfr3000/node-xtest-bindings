@@ -1,4 +1,5 @@
 {
+  "name": "node-xtest-bindings",
   "main": "index.js",
   "scripts": {
     "configure": "node-gyp configure",

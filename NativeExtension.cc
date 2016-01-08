@@ -6,8 +6,23 @@ using v8::FunctionTemplate;
 // C++ constructs that are exposed to javascript are exported here
 
 NAN_MODULE_INIT(InitAll) {
-  Nan::Set(target, Nan::New("XTestFakeKeyEvent").ToLocalChecked(),
-    Nan::GetFunction(Nan::New<FunctionTemplate>(XTestFakeKeyEvent)).ToLocalChecked());
+
+  Nan::Set(
+    target,
+    Nan::New("XTestFakeKeyEvent").ToLocalChecked(),
+    Nan::GetFunction(
+        Nan::New<FunctionTemplate>(XTestFakeKeyEvent)
+    ).ToLocalChecked()
+  );
+
+  Nan::Set(
+    target,
+    Nan::New("XTestFakeButtonEvent").ToLocalChecked(),
+    Nan::GetFunction(
+        Nan::New<FunctionTemplate>(XTestFakeButtonEvent)
+    ).ToLocalChecked()
+  );
+
 }
 
 NODE_MODULE(NativeExtension, InitAll)

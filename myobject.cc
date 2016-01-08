@@ -17,6 +17,7 @@ class MyObject : public Nan::ObjectWrap {
 
             //SetPrototypeMethod(tpl, "getHandle", GetHandle);
             SetPrototypeMethod(tpl, "fakeKeyEvent", fakeKeyEvent);
+            SetPrototypeMethod(tpl, "fakeButtonEvent", fakeButtonEvent);
 
             constructor().Reset(Nan::GetFunction(tpl).ToLocalChecked());
             Nan::Set(target, Nan::New("MyObject").ToLocalChecked(),
@@ -66,6 +67,23 @@ class MyObject : public Nan::ObjectWrap {
             cout << "faking key press " << pressed << " keySym: " << keySym << "code: " << keyCode << " delay = " << delay << endl;
 
             int returnValue = XTestFakeKeyEvent(obj->display, keyCode, pressed, delay);
+            XSync(obj->display, false);
+            info.GetReturnValue().Set(returnValue);
+        }
+
+        /*
+         * You can map 8 mouse buttons 
+         * (1 – Left, 2 – Middle, 3 – Right, 5 – Scroll,..).
+         */
+        static NAN_METHOD(fakeButtonEvent) {
+            int button = Nan::To<int>(info[0]).FromMaybe(1);
+            bool pressed = Nan::To<bool>(info[1]).FromMaybe(true);
+            int delay = Nan::To<int>(info[2]).FromMaybe(0);
+
+            MyObject* obj = Nan::ObjectWrap::Unwrap<MyObject>(info.This());
+            cout << "faking mouse button press " << pressed << " button: " << button << " delay = " << delay << endl;
+
+            int returnValue = XTestFakeButtonEvent(obj->display, button, pressed, delay);
             XSync(obj->display, false);
             info.GetReturnValue().Set(returnValue);
         }

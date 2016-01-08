@@ -4,5 +4,6 @@
 #include <nan.h>
 
 NAN_METHOD(XTestFakeKeyEvent);
+NAN_METHOD(XTestFakeButtonEvent);
 
 #endif
