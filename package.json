@@ -1,6 +1,7 @@
 {
   "name": "node-xtest-bindings",
   "main": "index.js",
+  "vesion": "1.0.0",
   "scripts": {
     "configure": "node-gyp configure",
     "build": "node-gyp build",
